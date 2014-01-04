@@ -7,21 +7,62 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MainViewController.h"
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
-
+@synthesize netStatus,hostReach;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+    self.hostReach = [Reachability reachabilityWithHostName:@"www.apple.com"];
+    [hostReach startNotifier];
+    [self updateInterfaceWith:hostReach];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    MainViewController *mainView = [[MainViewController alloc]initWithNibName:@"MainViewController" bundle:nil];
+    UINavigationController *navcontroller = [[UINavigationController alloc]initWithRootViewController:mainView];
+   self.window.rootViewController =navcontroller;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    return YES;
+//    NSURL *url = [NSURL URLWithString:@"http://imaladec.com/rss.php"];
+//    NSURLRequest *theRequest = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+//    NSURLConnection *theConnection = [[NSURLConnection alloc]initWithRequest:theRequest delegate:self];
+//    if(theConnection)
+//    {
+//        NSLog(@"OK");
+//    }
+//    else
+//    {
+//        NSLog(@"Fail");
+//    }
+   return YES;
 }
+
+-(void) updateInterfaceWith:(Reachability *)curReach
+{
+    self.netStatus = [curReach currentReachabilityStatus];
+    
+}
+
+-(void) reachabilityChanged:(NSNotification*)note
+{
+    
+    Reachability *curReach = [note object];
+    NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
+    [self updateInterfaceWith:curReach];
+    
+}
+
+-(void)connection:(NSURLConnection*)connection didReceiveData:(NSData *)data
+{
+
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

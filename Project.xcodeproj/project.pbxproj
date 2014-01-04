@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		840B0E0B1876B770006A6219 /* TweetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E091876B770006A6219 /* TweetList.m */; };
+		840B0E0C1876B770006A6219 /* TweetList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E0A1876B770006A6219 /* TweetList.xib */; };
+		840B0E1018773A94006A6219 /* tweetLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E0E18773A94006A6219 /* tweetLists.m */; };
+		840B0E1118773A94006A6219 /* tweetLists.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E0F18773A94006A6219 /* tweetLists.xib */; };
+		84A3C27A18756E5E00D8E53E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A3C27918756E5E00D8E53E /* Security.framework */; };
+		84A3C27C18756E6E00D8E53E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A3C27B18756E6E00D8E53E /* SystemConfiguration.framework */; };
+		84A3C27E18758C7000D8E53E /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A3C27D18758C6F00D8E53E /* 1.jpg */; };
+		84A3C28018758D3800D8E53E /* wallpaper.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A3C27F18758D3800D8E53E /* wallpaper.jpg */; };
+		84A3C2851875DA4900D8E53E /* TweetPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3C2831875DA4900D8E53E /* TweetPost.m */; };
+		84A3C2861875DA4A00D8E53E /* TweetPost.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A3C2841875DA4900D8E53E /* TweetPost.xib */; };
+		84E00EA61872F1AC0066C994 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E00EA51872F1AC0066C994 /* Reachability.m */; };
 		84E66376185F812E00708B42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66375185F812E00708B42 /* Foundation.framework */; };
 		84E66378185F812E00708B42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66377185F812E00708B42 /* CoreGraphics.framework */; };
 		84E6637A185F812E00708B42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66379185F812E00708B42 /* UIKit.framework */; };
@@ -22,6 +33,10 @@
 		84E66397185F812E00708B42 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E6637B185F812E00708B42 /* CoreData.framework */; };
 		84E6639F185F812E00708B42 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84E6639D185F812E00708B42 /* InfoPlist.strings */; };
 		84E663A1185F812E00708B42 /* ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E663A0185F812E00708B42 /* ProjectTests.m */; };
+		84E663B0185F820500708B42 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E663AE185F820500708B42 /* MainViewController.m */; };
+		84E663B1185F820500708B42 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E663AF185F820500708B42 /* MainViewController.xib */; };
+		84F367E1187072CE00733BF7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F367E0187072CE00733BF7 /* Social.framework */; };
+		84F367E3187072D800733BF7 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F367E2187072D800733BF7 /* Accounts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +50,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		840B0E081876B770006A6219 /* TweetList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetList.h; sourceTree = "<group>"; };
+		840B0E091876B770006A6219 /* TweetList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetList.m; sourceTree = "<group>"; };
+		840B0E0A1876B770006A6219 /* TweetList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetList.xib; sourceTree = "<group>"; };
+		840B0E0D18773A94006A6219 /* tweetLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweetLists.h; sourceTree = "<group>"; };
+		840B0E0E18773A94006A6219 /* tweetLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tweetLists.m; sourceTree = "<group>"; };
+		840B0E0F18773A94006A6219 /* tweetLists.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tweetLists.xib; sourceTree = "<group>"; };
+		84A3C277187564FF00D8E53E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		84A3C27918756E5E00D8E53E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		84A3C27B18756E6E00D8E53E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		84A3C27D18758C6F00D8E53E /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		84A3C27F18758D3800D8E53E /* wallpaper.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wallpaper.jpg; sourceTree = "<group>"; };
+		84A3C2821875DA4900D8E53E /* TweetPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetPost.h; sourceTree = "<group>"; };
+		84A3C2831875DA4900D8E53E /* TweetPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetPost.m; sourceTree = "<group>"; };
+		84A3C2841875DA4900D8E53E /* TweetPost.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetPost.xib; sourceTree = "<group>"; };
+		84E00EA41872F1AC0066C994 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		84E00EA51872F1AC0066C994 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		84E66372185F812E00708B42 /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E66375185F812E00708B42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84E66377185F812E00708B42 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +84,11 @@
 		84E6639C185F812E00708B42 /* ProjectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProjectTests-Info.plist"; sourceTree = "<group>"; };
 		84E6639E185F812E00708B42 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84E663A0185F812E00708B42 /* ProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProjectTests.m; sourceTree = "<group>"; };
+		84E663AD185F820500708B42 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		84E663AE185F820500708B42 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		84E663AF185F820500708B42 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		84F367E0187072CE00733BF7 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		84F367E2187072D800733BF7 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +96,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A3C27C18756E6E00D8E53E /* SystemConfiguration.framework in Frameworks */,
+				84A3C27A18756E5E00D8E53E /* Security.framework in Frameworks */,
+				84F367E3187072D800733BF7 /* Accounts.framework in Frameworks */,
+				84F367E1187072CE00733BF7 /* Social.framework in Frameworks */,
 				84E66378185F812E00708B42 /* CoreGraphics.framework in Frameworks */,
 				84E6637C185F812E00708B42 /* CoreData.framework in Frameworks */,
 				84E6637A185F812E00708B42 /* UIKit.framework in Frameworks */,
@@ -84,6 +124,22 @@
 		84E66369185F812E00708B42 = {
 			isa = PBXGroup;
 			children = (
+				840B0E0D18773A94006A6219 /* tweetLists.h */,
+				840B0E0E18773A94006A6219 /* tweetLists.m */,
+				840B0E0F18773A94006A6219 /* tweetLists.xib */,
+				840B0E081876B770006A6219 /* TweetList.h */,
+				840B0E091876B770006A6219 /* TweetList.m */,
+				840B0E0A1876B770006A6219 /* TweetList.xib */,
+				84A3C2821875DA4900D8E53E /* TweetPost.h */,
+				84A3C2831875DA4900D8E53E /* TweetPost.m */,
+				84A3C2841875DA4900D8E53E /* TweetPost.xib */,
+				84A3C27F18758D3800D8E53E /* wallpaper.jpg */,
+				84A3C27D18758C6F00D8E53E /* 1.jpg */,
+				84E00EA41872F1AC0066C994 /* Reachability.h */,
+				84E00EA51872F1AC0066C994 /* Reachability.m */,
+				84E663AD185F820500708B42 /* MainViewController.h */,
+				84E663AE185F820500708B42 /* MainViewController.m */,
+				84E663AF185F820500708B42 /* MainViewController.xib */,
 				84E6637D185F812E00708B42 /* Project */,
 				84E6639A185F812E00708B42 /* ProjectTests */,
 				84E66374185F812E00708B42 /* Frameworks */,
@@ -103,6 +159,11 @@
 		84E66374185F812E00708B42 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84A3C27B18756E6E00D8E53E /* SystemConfiguration.framework */,
+				84A3C27918756E5E00D8E53E /* Security.framework */,
+				84A3C277187564FF00D8E53E /* libxml2.dylib */,
+				84F367E2187072D800733BF7 /* Accounts.framework */,
+				84F367E0187072CE00733BF7 /* Social.framework */,
 				84E66375185F812E00708B42 /* Foundation.framework */,
 				84E66377185F812E00708B42 /* CoreGraphics.framework */,
 				84E66379185F812E00708B42 /* UIKit.framework */,
@@ -229,7 +290,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E66382185F812E00708B42 /* InfoPlist.strings in Resources */,
+				84A3C2861875DA4A00D8E53E /* TweetPost.xib in Resources */,
+				84A3C27E18758C7000D8E53E /* 1.jpg in Resources */,
+				84E663B1185F820500708B42 /* MainViewController.xib in Resources */,
 				84E6638D185F812E00708B42 /* Images.xcassets in Resources */,
+				84A3C28018758D3800D8E53E /* wallpaper.jpg in Resources */,
+				840B0E0C1876B770006A6219 /* TweetList.xib in Resources */,
+				840B0E1118773A94006A6219 /* tweetLists.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +318,11 @@
 				84E66388185F812E00708B42 /* AppDelegate.m in Sources */,
 				84E6638B185F812E00708B42 /* Project.xcdatamodeld in Sources */,
 				84E66384185F812E00708B42 /* main.m in Sources */,
+				84A3C2851875DA4900D8E53E /* TweetPost.m in Sources */,
+				84E663B0185F820500708B42 /* MainViewController.m in Sources */,
+				840B0E0B1876B770006A6219 /* TweetList.m in Sources */,
+				84E00EA61872F1AC0066C994 /* Reachability.m in Sources */,
+				840B0E1018773A94006A6219 /* tweetLists.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +444,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Project/Project-Prefix.pch";
 				INFOPLIST_FILE = "Project/Project-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Admin/Documents/Project/Project/Twitter+OAuth/SAOAuthTwitterEngine",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -385,6 +461,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Project/Project-Prefix.pch";
 				INFOPLIST_FILE = "Project/Project-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Admin/Documents/Project/Project/Twitter+OAuth/SAOAuthTwitterEngine",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -451,6 +531,7 @@
 				84E663A6185F812E00708B42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84E663A7185F812E00708B42 /* Build configuration list for PBXNativeTarget "ProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -459,6 +540,7 @@
 				84E663A9185F812E00708B42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

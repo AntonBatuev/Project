@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Reachability.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -18,5 +19,10 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+@property (nonatomic) NetworkStatus netStatus;
+@property (strong,nonatomic) Reachability *hostReach;
+
+-(void)updateInterfaceWith:(Reachability*) curReach;
 
 @end

@@ -49,6 +49,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *followerCount;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *screenName;
+@property (weak, nonatomic) IBOutlet UILabel *lbtweet;
+@property (weak, nonatomic) IBOutlet UILabel *lbfr;
+@property (weak, nonatomic) IBOutlet UILabel *lbfol;
+@property (weak, nonatomic) IBOutlet UIButton *btnTweet;
+@property (weak, nonatomic) IBOutlet UIButton *btnListTweet;
+@property (weak, nonatomic) IBOutlet UIButton *btnListFollower;
+@property (weak, nonatomic) IBOutlet UIButton *btnListFriend;
+@property (weak, nonatomic) IBOutlet UIButton *btnAbout;
+
+
 -(void) LoadMainView;
 
 @end

@@ -18,7 +18,8 @@
 
 @synthesize array,tableView,connection,webData,array2,connectButton,mainDict,username;
 @synthesize tweetCount,friendCount,followerCount,avatar,screenName,MainName;
-
+@synthesize lbfol,lbfr,lbtweet;
+@synthesize btnAbout,btnListFollower,btnListFriend,btnListTweet,btnTweet;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     
@@ -32,6 +33,23 @@
 
 - (void)viewDidLoad
 {
+    avatar.layer.cornerRadius =40;
+    avatar.clipsToBounds  = YES;
+  
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"MAIN.jpg"]drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
+    lbtweet.hidden =  YES;
+    lbfr.hidden =  YES;
+    lbfol.hidden =  YES;
+    btnTweet.hidden=YES;
+    btnListTweet.hidden=YES;
+    btnListFriend.hidden=YES;
+    btnListFollower.hidden = YES;
+    btnAbout.hidden = YES;
     [super viewDidLoad];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -52,9 +70,9 @@
     
     array2 = [[NSMutableArray alloc]init];
     [self.navigationController setNavigationBarHidden:YES];
-   UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [indicator startAnimating];
-    [self LoadMainView];
+   //UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+   // [indicator startAnimating];
+    //[self LoadMainView];
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -83,8 +101,10 @@
     [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error){
         if (granted) {
             NSArray *accounts = [accountStore accountsWithAccountType:accountType];
+            NSLog(@"COUNT accounts  = %d",accounts.count);
             if (accounts.count > 0)
             {
+                
                 ACAccount *twitterAccount = [accounts objectAtIndex:0];
                 NSString *str = twitterAccount.username;
                 NSLog(@"USERNAME = %@",str);
@@ -105,7 +125,8 @@
                             NSLog(@"Error: %@", error.localizedDescription);
                             return;
                         }
-                        if (responseData) {
+                        if (responseData)
+                        {
                             NSError *error = nil;
                             mainDict = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
                             
@@ -116,6 +137,15 @@
                             followerCount.text=[NSString stringWithFormat:@"%d", [[mainDict objectForKey:@"followers_count"]integerValue]];
                             friendCount.text=[NSString stringWithFormat:@"%d", [[mainDict objectForKey:@"friends_count"]integerValue]];
                             tweetCount.text = [NSString stringWithFormat:@"%d", [[mainDict objectForKey:@"statuses_count"]integerValue]];
+                            lbtweet.hidden =  NO;
+                            lbfr.hidden =  NO;
+                            lbfol.hidden =  NO;
+                            btnTweet.hidden=NO;
+                            btnListTweet.hidden=NO;
+                            btnListFriend.hidden=NO;
+                            btnListFollower.hidden = NO;
+                            btnAbout.hidden = NO;
+                            
                             [userDefaults setObject:MainName.text forKey:@"MainName"];
                             [userDefaults setObject:screenName.text forKey:@"screenName"];
                             [userDefaults setInteger:[[mainDict objectForKey:@"followers_count"]integerValue] forKey:@"followerCount"];
@@ -126,15 +156,19 @@
                             NSURL *imageurl = [NSURL URLWithString:mainDict[@"profile_image_url_https"]];
                             avatar.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
                             [userDefaults setObject:UIImagePNGRepresentation(avatar.image) forKey:@"image"];
-                            
-                            
                         }
                     });
                 }];
-            }
+            } else {UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Нет доступа"
+                                                                   message:@"Подключите аккаунт Твиттера настройках"
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"OK,пойду подключать"
+                                                         otherButtonTitles:nil];
+                [alert show];
+}
         } else
         {
-            NSLog(@"No access granted");
+            NSLog(@"alert");
         }
     }];
     [[UIApplication sharedApplication]setNetworkActivityIndicatorVisible:NO];

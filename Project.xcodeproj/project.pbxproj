@@ -15,6 +15,7 @@
 		840B0E1B18787E71006A6219 /* friendsList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E1918787E71006A6219 /* friendsList.xib */; };
 		840B0E1F1878848E006A6219 /* SendPrivateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E1D1878848E006A6219 /* SendPrivateView.m */; };
 		840B0E201878848E006A6219 /* SendPrivateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E1E1878848E006A6219 /* SendPrivateView.xib */; };
+		840B0E221878AF3F006A6219 /* MAIN.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E211878AF3E006A6219 /* MAIN.jpg */; };
 		84A3C27A18756E5E00D8E53E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A3C27918756E5E00D8E53E /* Security.framework */; };
 		84A3C27C18756E6E00D8E53E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A3C27B18756E6E00D8E53E /* SystemConfiguration.framework */; };
 		84A3C27E18758C7000D8E53E /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A3C27D18758C6F00D8E53E /* 1.jpg */; };
@@ -66,6 +67,7 @@
 		840B0E1C1878848E006A6219 /* SendPrivateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendPrivateView.h; sourceTree = "<group>"; };
 		840B0E1D1878848E006A6219 /* SendPrivateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPrivateView.m; sourceTree = "<group>"; };
 		840B0E1E1878848E006A6219 /* SendPrivateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendPrivateView.xib; sourceTree = "<group>"; };
+		840B0E211878AF3E006A6219 /* MAIN.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MAIN.jpg; sourceTree = "<group>"; };
 		84A3C277187564FF00D8E53E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		84A3C27918756E5E00D8E53E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		84A3C27B18756E6E00D8E53E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -134,6 +136,7 @@
 		84E66369185F812E00708B42 = {
 			isa = PBXGroup;
 			children = (
+				840B0E211878AF3E006A6219 /* MAIN.jpg */,
 				840B0E1C1878848E006A6219 /* SendPrivateView.h */,
 				840B0E1D1878848E006A6219 /* SendPrivateView.m */,
 				840B0E1E1878848E006A6219 /* SendPrivateView.xib */,
@@ -309,6 +312,7 @@
 				84A3C2861875DA4A00D8E53E /* TweetPost.xib in Resources */,
 				840B0E201878848E006A6219 /* SendPrivateView.xib in Resources */,
 				84A3C27E18758C7000D8E53E /* 1.jpg in Resources */,
+				840B0E221878AF3F006A6219 /* MAIN.jpg in Resources */,
 				84E663B1185F820500708B42 /* MainViewController.xib in Resources */,
 				840B0E1B18787E71006A6219 /* friendsList.xib in Resources */,
 				84E6638D185F812E00708B42 /* Images.xcassets in Resources */,

@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 
 
+
 @interface MainViewController ()
 
 @end
@@ -53,6 +54,12 @@
     [self.navigationController setNavigationBarHidden:YES];
    UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [indicator startAnimating];
+    [self LoadMainView];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"MAINVIEW");
+     [self.navigationController setNavigationBarHidden:YES];
     [self LoadMainView];
 }
 
@@ -245,12 +252,73 @@
     [self.navigationController pushViewController:tweetView animated:YES];
 
 }
-- (IBAction)tweetList:(id)sender {
+- (IBAction)tweetList:(id)sender
+{
     tweetLists *tweetListView = [[tweetLists alloc]initWithNibName:@"tweetLists" bundle:nil];
     tweetListView.name = MainName.text;
     tweetListView.screenname = [NSString stringWithFormat:@"%@", screenName.text];
     tweetListView.mainImage = avatar.image;
     [self.navigationController pushViewController:tweetListView animated:YES];
+}
+
+
+- (IBAction)messageSent:(id)sender {
+    
+    
+    accountStore= [[ACAccountStore alloc]init];
+    ACAccountType *twitterType =[accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    NSString *text  = @"from my application";
+    SLRequestHandler requestHandler =
+        ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+            if (responseData) {
+                NSInteger statusCode = urlResponse.statusCode;
+                if (statusCode >= 200 && statusCode < 300) {
+                    NSDictionary *postResponseData =
+                    [NSJSONSerialization JSONObjectWithData:responseData
+                                                    options:NSJSONReadingMutableContainers
+                                                      error:NULL];
+                    NSLog(@"[SUCCESS!] Created Tweet with ID: %@", postResponseData[@"id_str"]);
+                    //UIAlertView *simpleAlert = [[UIAlertView alloc]initWithTitle:@"Твит отправлен" message:@"" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    //[simpleAlert show];
+                    
+                }
+                else {
+                    NSLog(@"[ERROR] Server responded: status code %d %@", statusCode,
+                          [NSHTTPURLResponse localizedStringForStatusCode:statusCode]);
+                    //  UIAlertView *simpleAlert1 = [[UIAlertView alloc]initWithTitle:@"Твит не отправлен" message:@"Напишите что-нибудь другое" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    // [simpleAlert1 show];
+                }
+            }
+            else {
+                NSLog(@"[ERROR] An error occurred while posting: %@", [error localizedDescription]);
+            }
+        };
+        
+        ACAccountStoreRequestAccessCompletionHandler accountStoreHandler =
+        ^(BOOL granted, NSError *error) {
+            if (granted) {
+                NSArray *accounts = [accountStore accountsWithAccountType:twitterType];
+                NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/direct_messages/new.json"];
+                NSDictionary *params = @ {@"screen_name":@"monster3991",@"text" : text};
+                SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
+                                                        requestMethod:SLRequestMethodPOST
+                                                                  URL:url
+                                                           parameters:params];
+                [request setAccount:[accounts lastObject]];
+                [request setAccessibilityValue:@"1"];
+                [request performRequestWithHandler:requestHandler];
+            }
+            else {
+                NSLog(@"[ERROR] An error occurred while asking for user authorization: %@",
+                      [error localizedDescription]);
+            }
+        };
+        
+        [accountStore requestAccessToAccountsWithType:twitterType
+                                              options:NULL
+                                           completion:accountStoreHandler];
+      
+    
 }
 
 
@@ -293,6 +361,19 @@
         
     }else if (appDelegate.netStatus == ReachableViaWiFi) {NSLog(@"Connection ReachableViaWiFi");}
     else if (appDelegate.netStatus ==ReachableViaWWAN) {NSLog(@"Connection RechableViaWWAN");}
+}
+
+
+- (IBAction)FollowerButton:(id)sender {
+    followerList *followerView = [[followerList alloc]initWithNibName:@"followerList" bundle:nil];
+    [self.navigationController pushViewController:followerView animated:YES];
+
+}
+
+- (IBAction)FriendsButton:(id)sender {
+    friendsList *friendsView = [[friendsList alloc]initWithNibName:@"friendsList" bundle:nil];
+    [self.navigationController pushViewController:friendsView animated:YES];
+
 }
 
 - (IBAction)pushButton1:(id)sender////////////////////////////////////////////////////////////////////

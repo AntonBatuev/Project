@@ -11,8 +11,10 @@
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "TweetPost.h"
-#import "TweetList.h"
+//#import "TweetList.h"
 #import "tweetLists.h"
+#import "followerList.h"
+#import "friendsList.h"
 
 @interface MainViewController : UIViewController<NSURLConnectionDataDelegate>
 
@@ -21,7 +23,7 @@
     ACAccountStore *accountStore;
     ACAccountType *accountType;
     //UIActivityIndicatorView *indicator;
-
+    
 }
 
 //@property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -47,7 +49,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *followerCount;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *screenName;
-
 -(void) LoadMainView;
 
 @end

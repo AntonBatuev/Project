@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		840B0E0B1876B770006A6219 /* TweetList.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E091876B770006A6219 /* TweetList.m */; };
-		840B0E0C1876B770006A6219 /* TweetList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E0A1876B770006A6219 /* TweetList.xib */; };
 		840B0E1018773A94006A6219 /* tweetLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E0E18773A94006A6219 /* tweetLists.m */; };
 		840B0E1118773A94006A6219 /* tweetLists.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E0F18773A94006A6219 /* tweetLists.xib */; };
+		840B0E15187864F8006A6219 /* followerList.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E13187864F8006A6219 /* followerList.m */; };
+		840B0E16187864F8006A6219 /* followerList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E14187864F8006A6219 /* followerList.xib */; };
+		840B0E1A18787E71006A6219 /* friendsList.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E1818787E71006A6219 /* friendsList.m */; };
+		840B0E1B18787E71006A6219 /* friendsList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E1918787E71006A6219 /* friendsList.xib */; };
+		840B0E1F1878848E006A6219 /* SendPrivateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E1D1878848E006A6219 /* SendPrivateView.m */; };
+		840B0E201878848E006A6219 /* SendPrivateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E1E1878848E006A6219 /* SendPrivateView.xib */; };
 		84A3C27A18756E5E00D8E53E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A3C27918756E5E00D8E53E /* Security.framework */; };
 		84A3C27C18756E6E00D8E53E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A3C27B18756E6E00D8E53E /* SystemConfiguration.framework */; };
 		84A3C27E18758C7000D8E53E /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A3C27D18758C6F00D8E53E /* 1.jpg */; };
@@ -50,12 +54,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		840B0E081876B770006A6219 /* TweetList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetList.h; sourceTree = "<group>"; };
-		840B0E091876B770006A6219 /* TweetList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetList.m; sourceTree = "<group>"; };
-		840B0E0A1876B770006A6219 /* TweetList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetList.xib; sourceTree = "<group>"; };
 		840B0E0D18773A94006A6219 /* tweetLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweetLists.h; sourceTree = "<group>"; };
 		840B0E0E18773A94006A6219 /* tweetLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tweetLists.m; sourceTree = "<group>"; };
 		840B0E0F18773A94006A6219 /* tweetLists.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tweetLists.xib; sourceTree = "<group>"; };
+		840B0E12187864F8006A6219 /* followerList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = followerList.h; sourceTree = "<group>"; };
+		840B0E13187864F8006A6219 /* followerList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = followerList.m; sourceTree = "<group>"; };
+		840B0E14187864F8006A6219 /* followerList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = followerList.xib; sourceTree = "<group>"; };
+		840B0E1718787E71006A6219 /* friendsList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = friendsList.h; sourceTree = "<group>"; };
+		840B0E1818787E71006A6219 /* friendsList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = friendsList.m; sourceTree = "<group>"; };
+		840B0E1918787E71006A6219 /* friendsList.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = friendsList.xib; sourceTree = "<group>"; };
+		840B0E1C1878848E006A6219 /* SendPrivateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendPrivateView.h; sourceTree = "<group>"; };
+		840B0E1D1878848E006A6219 /* SendPrivateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPrivateView.m; sourceTree = "<group>"; };
+		840B0E1E1878848E006A6219 /* SendPrivateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendPrivateView.xib; sourceTree = "<group>"; };
 		84A3C277187564FF00D8E53E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		84A3C27918756E5E00D8E53E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		84A3C27B18756E6E00D8E53E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -124,12 +134,18 @@
 		84E66369185F812E00708B42 = {
 			isa = PBXGroup;
 			children = (
+				840B0E1C1878848E006A6219 /* SendPrivateView.h */,
+				840B0E1D1878848E006A6219 /* SendPrivateView.m */,
+				840B0E1E1878848E006A6219 /* SendPrivateView.xib */,
+				840B0E1718787E71006A6219 /* friendsList.h */,
+				840B0E1818787E71006A6219 /* friendsList.m */,
+				840B0E1918787E71006A6219 /* friendsList.xib */,
+				840B0E12187864F8006A6219 /* followerList.h */,
+				840B0E13187864F8006A6219 /* followerList.m */,
+				840B0E14187864F8006A6219 /* followerList.xib */,
 				840B0E0D18773A94006A6219 /* tweetLists.h */,
 				840B0E0E18773A94006A6219 /* tweetLists.m */,
 				840B0E0F18773A94006A6219 /* tweetLists.xib */,
-				840B0E081876B770006A6219 /* TweetList.h */,
-				840B0E091876B770006A6219 /* TweetList.m */,
-				840B0E0A1876B770006A6219 /* TweetList.xib */,
 				84A3C2821875DA4900D8E53E /* TweetPost.h */,
 				84A3C2831875DA4900D8E53E /* TweetPost.m */,
 				84A3C2841875DA4900D8E53E /* TweetPost.xib */,
@@ -291,12 +307,14 @@
 			files = (
 				84E66382185F812E00708B42 /* InfoPlist.strings in Resources */,
 				84A3C2861875DA4A00D8E53E /* TweetPost.xib in Resources */,
+				840B0E201878848E006A6219 /* SendPrivateView.xib in Resources */,
 				84A3C27E18758C7000D8E53E /* 1.jpg in Resources */,
 				84E663B1185F820500708B42 /* MainViewController.xib in Resources */,
+				840B0E1B18787E71006A6219 /* friendsList.xib in Resources */,
 				84E6638D185F812E00708B42 /* Images.xcassets in Resources */,
 				84A3C28018758D3800D8E53E /* wallpaper.jpg in Resources */,
-				840B0E0C1876B770006A6219 /* TweetList.xib in Resources */,
 				840B0E1118773A94006A6219 /* tweetLists.xib in Resources */,
+				840B0E16187864F8006A6219 /* followerList.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,9 +338,11 @@
 				84E66384185F812E00708B42 /* main.m in Sources */,
 				84A3C2851875DA4900D8E53E /* TweetPost.m in Sources */,
 				84E663B0185F820500708B42 /* MainViewController.m in Sources */,
-				840B0E0B1876B770006A6219 /* TweetList.m in Sources */,
 				84E00EA61872F1AC0066C994 /* Reachability.m in Sources */,
+				840B0E1F1878848E006A6219 /* SendPrivateView.m in Sources */,
 				840B0E1018773A94006A6219 /* tweetLists.m in Sources */,
+				840B0E15187864F8006A6219 /* followerList.m in Sources */,
+				840B0E1A18787E71006A6219 /* friendsList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

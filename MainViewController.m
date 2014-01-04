@@ -63,6 +63,17 @@
     [self LoadMainView];
 }
 
+- (IBAction)aboutProgram:(id)sender {
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"О программе"
+                                            message:@"Реализованно:\n1.Просмотр твитов\n2.Отправка твитов\n3.Отправка твитов с фото\n4.Просмотр списка друзей\n5.Просмотр списка фолловеров\n6.Отправка личных сообщений\n7.Просмотр ленты\nВерсия 1.1\nCopyLeft ↄ 2014 Batuev Anton"
+
+                                            delegate:self
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    [alert show];
+}
+
 -(void)LoadMainView
 {
     NSLog(@"START");

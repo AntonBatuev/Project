@@ -104,7 +104,6 @@
             NSLog(@"COUNT accounts  = %d",accounts.count);
             if (accounts.count > 0)
             {
-                
                 ACAccount *twitterAccount = [accounts objectAtIndex:0];
                 NSString *str = twitterAccount.username;
                 NSLog(@"USERNAME = %@",str);
@@ -114,7 +113,6 @@
                 [twitterInfoRequest setAccount:twitterAccount];
                 [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        // Check if we reached the reate limit
                         if ([urlResponse statusCode] == 429)
                         {
                             NSLog(@"Rate limit reached");
@@ -159,7 +157,9 @@
                         }
                     });
                 }];
-            } else {UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Нет доступа"
+            } else {
+                
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Нет доступа"
                                                                    message:@"Подключите аккаунт Твиттера настройках"
                                                                   delegate:self
                                                          cancelButtonTitle:@"OK,пойду подключать"
@@ -172,8 +172,6 @@
         }
     }];
     [[UIApplication sharedApplication]setNetworkActivityIndicatorVisible:NO];
-
-    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -420,159 +418,10 @@
     [self.navigationController pushViewController:friendsView animated:YES];
 
 }
-
-- (IBAction)pushButton1:(id)sender////////////////////////////////////////////////////////////////////
-{
-//    [[UIApplication sharedApplication]setNetworkActivityIndicatorVisible:YES];
-//    accountStore = [[ACAccountStore alloc] init];
-//    accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-//    [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error){
-//        if (granted) {
-//            NSArray *accounts = [accountStore accountsWithAccountType:accountType];
-//            if (accounts.count > 0)
-//            {
-//                ACAccount *twitterAccount = [accounts objectAtIndex:0];
-//                NSString *str = twitterAccount.username;
-//                NSLog(@"USERNAME = %@",str);
-//                NSDictionary *param;
-//                NSURL *requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
-//                SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestAPI parameters:param];
-//                [twitterInfoRequest setAccount:twitterAccount];
-//                [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-//                    dispatch_async(dispatch_get_main_queue(), ^{
-//                        // Check if we reached the reate limit
-//                        if ([urlResponse statusCode] == 429)
-//                        {
-//                            NSLog(@"Rate limit reached");
-//                            return;
-//                        }
-//                        if (error)
-//                        {
-//                            NSLog(@"Error: %@", error.localizedDescription);
-//                            return;
-//                        }
-//                        if (responseData) {
-//                            NSError *error = nil;
-//                            array = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-//                            NSLog(@"arrar.count = %d",[array count]);
-//                            NSDictionary *stat = array[0];
-//                            NSLog(@"text = %@,id = %@",stat[@"text"],[stat[@"id"]stringValue]);
-//                            
-//                           
-//                            
-//                        }
-//                    });
-//                }];
-//            }
-//        } else
-//        {
-//            NSLog(@"No access granted");
-//        }
-//    }];
-//    [[UIApplication sharedApplication]setNetworkActivityIndicatorVisible:NO];
-   accountStore= [[ACAccountStore alloc]init];
-    ACAccountType *twitterType =
-    [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    
-    SLRequestHandler requestHandler =
-    ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        if (responseData) {
-            NSInteger statusCode = urlResponse.statusCode;
-            if (statusCode >= 200 && statusCode < 300) {
-                NSDictionary *postResponseData =
-                [NSJSONSerialization JSONObjectWithData:responseData
-                                                options:NSJSONReadingMutableContainers
-                                                  error:NULL];
-                NSLog(@"[SUCCESS!] Created Tweet with ID: %@", postResponseData[@"id_str"]);
-                
-            }
-            else {
-                NSLog(@"[ERROR] Server responded: status code %d %@", statusCode,
-                      [NSHTTPURLResponse localizedStringForStatusCode:statusCode]);
-             
-            }
-        }
-        else {
-            NSLog(@"[ERROR] An error occurred while posting: %@", [error localizedDescription]);
-        }
-    };
-    
-    ACAccountStoreRequestAccessCompletionHandler accountStoreHandler =
-    ^(BOOL granted, NSError *error) {
-        if (granted) {
-            NSArray *accounts = [accountStore accountsWithAccountType:twitterType];
-            NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/destroy/419026456900304896.json"];
-            NSDictionary *params= @ {@"id_str" : @"419026456900304896"};
-            SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeTwitter
-                                                    requestMethod:SLRequestMethodPOST
-                                                              URL:url
-                                                       parameters:params];
-            [request setAccount:[accounts lastObject]];
-            [request setAccessibilityValue:@"1"];
-            [request performRequestWithHandler:requestHandler];
-        }
-        else {
-            NSLog(@"[ERROR] An error occurred while asking for user authorization: %@",
-                  [error localizedDescription]);
-        }
-    };
-    
-    [accountStore requestAccessToAccountsWithType:twitterType
-                                          options:NULL
-                                       completion:accountStoreHandler];
+- (IBAction)lentaButton:(id)sender {
  
-    
+    LentaView *lentaView = [[LentaView alloc]initWithNibName:@"LentaView" bundle:nil];
+    [self.navigationController pushViewController:lentaView animated:YES];
 }
 
-
-- (IBAction)pushButton2:(id)sender
-{
-        [[UIApplication sharedApplication]setNetworkActivityIndicatorVisible:YES];
-        accountStore = [[ACAccountStore alloc] init];
-        accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-        [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error){
-            if (granted) {
-                NSArray *accounts = [accountStore accountsWithAccountType:accountType];
-                if (accounts.count > 0)
-                {
-                    ACAccount *twitterAccount = [accounts objectAtIndex:0];
-                    NSString *str = twitterAccount.username;
-                    NSLog(@"USERNAME = %@",str);
-                   NSDictionary *param;
-                    NSURL *requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
-                    SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestAPI parameters:param];
-                    [twitterInfoRequest setAccount:twitterAccount];
-                    [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            // Check if we reached the reate limit
-                            if ([urlResponse statusCode] == 429)
-                            {
-                                NSLog(@"Rate limit reached");
-                                return;
-                            }
-                            if (error)
-                            {
-                                NSLog(@"Error: %@", error.localizedDescription);
-                               return;
-                            }
-                            if (responseData) {
-                                NSError *error = nil;
-                                array = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
-                                NSLog(@"arrar.count = %d",[array count]);
-                               NSDictionary *stat = array[0];
-                                NSLog(@"text = %@,id = %@",stat[@"text"],[stat[@"id"]stringValue]);
-    
-    
-    
-                           }
-                        });
-                    }];
-                }
-            } else
-            {
-                NSLog(@"No access granted");
-            }
-        }];
-
-}
 @end

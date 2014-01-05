@@ -23,5 +23,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ImageView;
 @property (weak, nonatomic) IBOutlet UIButton *photoButton;
 @property (weak, nonatomic) IBOutlet UIButton *sendTweet;
-
+@property (strong,nonatomic) IBOutlet UIBarButtonItem *sendButton;
 @end

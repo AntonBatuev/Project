@@ -74,7 +74,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath * )indexPath
 {
     numberRow = indexPath.row;
-    UIActionSheet * actSheet =[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Отправить сообщение", nil];
+    UIActionSheet * actSheet =[[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:@"Отправить сообщение",@"Просмотр профиля", nil];
     actSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
     [actSheet showInView:self.view];
     
@@ -83,9 +83,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -94,12 +91,13 @@
     }
     NSLog(@"array count = = = = %d",users.count);
     NSDictionary *user = users[indexPath.row];
-    
     cell.textLabel.text = user[@"name"];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"@%@", user[@"screen_name"]];
     NSURL *urlImage = [NSURL URLWithString:user[@"profile_image_url"]];
-    
     cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:urlImage]];
+   // UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+   // [cell addSubview:button];
+
     
     return cell;
 }
@@ -111,7 +109,7 @@
 }
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (actionSheet.tag) {
+    switch (buttonIndex) {
         case 0:
         {
             NSLog(@"Send message");
@@ -123,13 +121,25 @@
         }
             break;
             case 1:
-            NSLog(@"cancel");
-        break;
             
-        default:
+        {
+           // ProfileView * profileView = [[ProfileView alloc]initWithNibName:@"ProfileView" bundle:nil];
+            //[self.navigationController pushViewController:profileView animated:YES];
+
+                   }
+            break;
+            
+            
+            case 2:
+        { NSLog(@"cancel");
+
+                  }
+            break;
+                  default:
             break;
     }
     
+    NSLog(@"NUMBER BUTTON = %d",buttonIndex);
 }
 -(void)downloadFollowerList
 {
@@ -149,20 +159,15 @@
                 NSURL *requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/followers/list.json"];
                 SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestAPI parameters:param];
                 [twitterInfoRequest setAccount:twitterAccount];
-                [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                    
+                [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
+                {
                     tweetDict= [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
                     if(tweetDict.count!=0){
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
+                        dispatch_async(dispatch_get_main_queue(), ^
+                        {
                             users = tweetDict[@"users"];
                             NSLog(@"users = %d",[users count]);
-                            
-                            
-                            
                             [followerTable reloadData];
-                            // Check if we reached the reate limit
                         });
                     }
                 }];

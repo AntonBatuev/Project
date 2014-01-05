@@ -81,7 +81,7 @@
     
        ACAccountStore* accountStore= [[ACAccountStore alloc]init];
     ACAccountType *twitterType =[accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    NSString *text = [NSString stringWithFormat:@"%@ #fromMyApp" ,TextView.text ];
+    NSString *text = [NSString stringWithFormat:@"%@ #Twitty" ,TextView.text ];
     SLRequestHandler requestHandler =
     ^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
         if (responseData) {

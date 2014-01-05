@@ -15,7 +15,7 @@
 #import "tweetLists.h"
 #import "followerList.h"
 #import "friendsList.h"
-
+#import "LentaView.h"
 @interface MainViewController : UIViewController<NSURLConnectionDataDelegate>
 
 {

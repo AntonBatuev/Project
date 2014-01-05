@@ -13,7 +13,7 @@
 @end
 
 @implementation TweetPost
-@synthesize LabelCountSymbol,TextView,image,imagePicker,ImageView,photoButton,sendTweet;
+@synthesize LabelCountSymbol,TextView,image,imagePicker,ImageView,photoButton,sendTweet,sendButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,15 +26,15 @@
 
 - (void)viewDidLoad
 {
-    
+    sendButton= [[UIBarButtonItem alloc]initWithTitle:@"Отправить" style:UIBarButtonItemStyleDone target:self action:@selector(Tweet)];
+    self.navigationItem.rightBarButtonItem = sendButton;
+    sendButton.enabled = NO;
     [super viewDidLoad];
-    sendTweet.enabled = NO;
+    sendTweet.hidden = YES;
     fotoFlag= NO;
     [self.navigationController setNavigationBarHidden:NO];
     ImageView.layer.cornerRadius =60;
     ImageView.clipsToBounds  = YES;
-    
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,10 +47,15 @@
 -(void)textViewDidChange:(UITextView *) textView
 {
     int len = textView.text.length;
-    if (len == 0) sendTweet.enabled = NO;
-    else sendTweet.enabled = YES;
-    
-    LabelCountSymbol.text = [NSString stringWithFormat:@"%i",140-len];
+    if (len == 0) sendButton.enabled = NO;
+    else sendButton.enabled = YES;
+    if (fotoFlag == YES) {
+         LabelCountSymbol.text = [NSString stringWithFormat:@"%i",116-len];
+    }
+    else
+    {
+        LabelCountSymbol.text = [NSString stringWithFormat:@"%i",140-len];
+    }
     
 }
 -(BOOL)textViewShouldEndEditing:(UITextView *)textView
@@ -67,11 +72,25 @@
         [textView resignFirstResponder];
         
     }
-    if ([textView.text length]>139) {
-        return NO;
-    } else return YES;
+    if (fotoFlag ==YES)
+        {
+            if ([textView.text length]>115)
+                {
+                    return NO;
+                }
+            else return YES;
+        }
+    else
+    {
+        if ([textView.text length]>139)
+        {
+            return NO;
+        }
+        else return YES;
+    }
+    
 }
-- (IBAction)Tweet:(id)sender {
+- (void)Tweet {
     
         
     
@@ -203,11 +222,9 @@
      [ImageView setImage:image];
     [photoButton setTitle:@"Убрать Фото" forState:UIControlStateNormal];
      fotoFlag = YES;
+    LabelCountSymbol.text = @"116";
     // myimage = info[UIImagePickerController	];
     //[img setImage:myimage];
-    
-
-    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -222,6 +239,7 @@
     }
     else if (fotoFlag==NO)
     {
+         LabelCountSymbol.text = @"140";
         NSLog(@"FOTO don`t selected");
        
         self.imagePicker = [[UIImagePickerController alloc]init];

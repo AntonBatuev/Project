@@ -17,6 +17,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *followerTable;
-@property   (strong,nonatomic) NSMutableDictionary *tweetDict;
+@property (strong,nonatomic) NSMutableDictionary *tweetDict;
 @property (strong,nonatomic) NSArray *users;
 @end

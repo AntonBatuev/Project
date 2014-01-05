@@ -23,6 +23,8 @@
 		84A3C2851875DA4900D8E53E /* TweetPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A3C2831875DA4900D8E53E /* TweetPost.m */; };
 		84A3C2861875DA4A00D8E53E /* TweetPost.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A3C2841875DA4900D8E53E /* TweetPost.xib */; };
 		84E00EA61872F1AC0066C994 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E00EA51872F1AC0066C994 /* Reachability.m */; };
+		84E4F86C18798EF40017D07F /* LentaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F86A18798EF40017D07F /* LentaView.m */; };
+		84E4F86D18798EF40017D07F /* LentaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F86B18798EF40017D07F /* LentaView.xib */; };
 		84E66376185F812E00708B42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66375185F812E00708B42 /* Foundation.framework */; };
 		84E66378185F812E00708B42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66377185F812E00708B42 /* CoreGraphics.framework */; };
 		84E6637A185F812E00708B42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66379185F812E00708B42 /* UIKit.framework */; };
@@ -78,6 +80,9 @@
 		84A3C2841875DA4900D8E53E /* TweetPost.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetPost.xib; sourceTree = "<group>"; };
 		84E00EA41872F1AC0066C994 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		84E00EA51872F1AC0066C994 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		84E4F86918798EF40017D07F /* LentaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LentaView.h; sourceTree = "<group>"; };
+		84E4F86A18798EF40017D07F /* LentaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LentaView.m; sourceTree = "<group>"; };
+		84E4F86B18798EF40017D07F /* LentaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LentaView.xib; sourceTree = "<group>"; };
 		84E66372185F812E00708B42 /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E66375185F812E00708B42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84E66377185F812E00708B42 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -136,6 +141,9 @@
 		84E66369185F812E00708B42 = {
 			isa = PBXGroup;
 			children = (
+				84E4F86918798EF40017D07F /* LentaView.h */,
+				84E4F86A18798EF40017D07F /* LentaView.m */,
+				84E4F86B18798EF40017D07F /* LentaView.xib */,
 				840B0E211878AF3E006A6219 /* MAIN.jpg */,
 				840B0E1C1878848E006A6219 /* SendPrivateView.h */,
 				840B0E1D1878848E006A6219 /* SendPrivateView.m */,
@@ -317,6 +325,7 @@
 				840B0E1B18787E71006A6219 /* friendsList.xib in Resources */,
 				84E6638D185F812E00708B42 /* Images.xcassets in Resources */,
 				84A3C28018758D3800D8E53E /* wallpaper.jpg in Resources */,
+				84E4F86D18798EF40017D07F /* LentaView.xib in Resources */,
 				840B0E1118773A94006A6219 /* tweetLists.xib in Resources */,
 				840B0E16187864F8006A6219 /* followerList.xib in Resources */,
 			);
@@ -338,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E66388185F812E00708B42 /* AppDelegate.m in Sources */,
+				84E4F86C18798EF40017D07F /* LentaView.m in Sources */,
 				84E6638B185F812E00708B42 /* Project.xcdatamodeld in Sources */,
 				84E66384185F812E00708B42 /* main.m in Sources */,
 				84A3C2851875DA4900D8E53E /* TweetPost.m in Sources */,

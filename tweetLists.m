@@ -63,8 +63,10 @@
                    
                     tweetDict= [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
                     if(tweetDict.count!=0){
-                        
+                      
                     dispatch_async(dispatch_get_main_queue(), ^{
+                      
+                        //[tweetTable beginUpdates];
                         arrayTweet = [NSMutableArray arrayWithCapacity:tweetDict.count];
                         NSLog(@"tweetDICT COUNT = %d",tweetDict.count);
                         
@@ -75,10 +77,11 @@
                            }
                         NSLog(@"arTWEET = %d",arrayTweet.count);
 
-
+                             //[tweetTable endUpdates];
                         [tweetTable reloadData];
                         // Check if we reached the reate limit
                                             });
+                       
                     }
                 }];
             }
@@ -114,19 +117,22 @@
         
         NSDictionary *selectTweet = tweetDict[indexPath.row];
         idTweet = selectTweet[@"id_str"];
-        NSLog(@"COUNT TWEET DICT 1   = %d COUNT ARRAY TWEET 1  = %d",[tweetDict count],[arrayTweet count]);
-
+      //  NSLog(@"COUNT TWEET DICT 1   = %d COUNT ARRAY TWEET 1  = %d",[tweetDict count],[arrayTweet count]);
+        //[tableView beginUpdates];
         [arrayTweet removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationTop];
+       [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationTop];
+       //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        
         [self deleteTweet:idTweet];
         [self downloadTweet];
         NSLog(@"COUNT TWEET DICT 2 = %d COUNT ARRAY TWEET 2 = %d",[tweetDict count],[arrayTweet count]);
         
-        //[self deleteTweet:idTweet];
-        [tableView reloadData];
+       [tableView reloadData];
+        //[tableView endUpdates];
         
     }
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+    {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
 }

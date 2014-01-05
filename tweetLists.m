@@ -33,7 +33,11 @@
     [self downloadTweet];
     // Do any additional setup after loading the view from its nib.
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self downloadTweet];
 
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -42,7 +46,7 @@
 -(void)downloadTweet
 {
     
-    [arrayTweet removeAllObjects];
+    //[tweetDict removeAllObjects];
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error){
@@ -56,6 +60,7 @@
                 NSLog(@"USERNAME = %@",str);
                 NSMutableDictionary *param =[[NSMutableDictionary alloc]init];
                 [param setObject:@"100" forKey:@"count"];
+                [param setObject:@"1" forKey:@"include_entities"];
                 NSURL *requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/user_timeline.json"];
                 SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestAPI parameters:param];
                 [twitterInfoRequest setAccount:twitterAccount];
@@ -102,14 +107,15 @@
 {
     // Return the number of rows in the section.
    NSLog(@"NUMBER______ARRAY TWEET = %d,ARRAY DICT  = %d",[arrayTweet count],[tweetDict count]);
-    return [arrayTweet count];
+  //  return [arrayTweet count];
+    return [tweetDict count];
     //return 10;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -139,7 +145,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath * )indexPath
 {
-       [tableView deselectRowAtIndexPath:indexPath animated:YES];
+ 
+    TweetView *tweetView = [[TweetView alloc]initWithNibName:@"TweetView" bundle:nil];
+    tweetView.lentaORtweet = NO;
+    NSDictionary *dict = tweetDict[indexPath.row];
+    tweetView.tweet = dict;
+    NSLog(@"TWEET TEXT ====  %@",dict[@"text"] );
+    [self.navigationController pushViewController:tweetView animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -151,7 +164,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     CGRect size = CGRectMake(40, 25, 320, 25);
     UILabel *tweetLabel = [[UILabel alloc]initWithFrame:size];
@@ -167,14 +180,21 @@
     nameLabel.font = [UIFont systemFontOfSize:12.0];
     screenNameLabel.font = [UIFont systemFontOfSize:12.0];
     screenNameLabel.text = @"ScreenLabel";
-    [cell addSubview:tweetLabel];
-    [cell addSubview:nameLabel];
-    [cell addSubview:screenNameLabel];
-    [cell addSubview:imageCell];
+  //  [cell addSubview:tweetLabel];
+   // [cell addSubview:nameLabel];
+   // [cell addSubview:screenNameLabel];
+   // [cell addSubview:imageCell];
+  //  NSDictionary
     NSDictionary *dict = tweetDict[indexPath.row];
-    tweetLabel.text=arrayTweet[indexPath.row];
-    nameLabel.text = name;
-    screenNameLabel.text = screenname;
+    cell.textLabel.text = dict[@"text"];
+    NSDictionary *user = dict[@"user"];
+    cell.detailTextLabel.text =[NSString stringWithFormat:@"@%@", user[@"screen_name"]];
+    NSURL *imageurl = [NSURL URLWithString:user[@"profile_image_url"]];
+    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
+    
+    //tweetLabel.text=arrayTweet[indexPath.row];
+    //nameLabel.text = name;
+    //screenNameLabel.text = screenname;
     
     return cell;
 }

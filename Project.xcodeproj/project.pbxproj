@@ -25,6 +25,10 @@
 		84E00EA61872F1AC0066C994 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E00EA51872F1AC0066C994 /* Reachability.m */; };
 		84E4F86C18798EF40017D07F /* LentaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F86A18798EF40017D07F /* LentaView.m */; };
 		84E4F86D18798EF40017D07F /* LentaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F86B18798EF40017D07F /* LentaView.xib */; };
+		84E4F8711879DD3B0017D07F /* TweetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F86F1879DD3B0017D07F /* TweetView.m */; };
+		84E4F8721879DD3B0017D07F /* TweetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F8701879DD3B0017D07F /* TweetView.xib */; };
+		84E4F8761879F9240017D07F /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E4F8741879F9240017D07F /* ProfileView.m */; };
+		84E4F8771879F9240017D07F /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E4F8751879F9240017D07F /* ProfileView.xib */; };
 		84E66376185F812E00708B42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66375185F812E00708B42 /* Foundation.framework */; };
 		84E66378185F812E00708B42 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66377185F812E00708B42 /* CoreGraphics.framework */; };
 		84E6637A185F812E00708B42 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84E66379185F812E00708B42 /* UIKit.framework */; };
@@ -83,6 +87,12 @@
 		84E4F86918798EF40017D07F /* LentaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LentaView.h; sourceTree = "<group>"; };
 		84E4F86A18798EF40017D07F /* LentaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LentaView.m; sourceTree = "<group>"; };
 		84E4F86B18798EF40017D07F /* LentaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LentaView.xib; sourceTree = "<group>"; };
+		84E4F86E1879DD3B0017D07F /* TweetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetView.h; sourceTree = "<group>"; };
+		84E4F86F1879DD3B0017D07F /* TweetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetView.m; sourceTree = "<group>"; };
+		84E4F8701879DD3B0017D07F /* TweetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetView.xib; sourceTree = "<group>"; };
+		84E4F8731879F9240017D07F /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
+		84E4F8741879F9240017D07F /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
+		84E4F8751879F9240017D07F /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		84E66372185F812E00708B42 /* Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E66375185F812E00708B42 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		84E66377185F812E00708B42 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -141,6 +151,12 @@
 		84E66369185F812E00708B42 = {
 			isa = PBXGroup;
 			children = (
+				84E4F8731879F9240017D07F /* ProfileView.h */,
+				84E4F8741879F9240017D07F /* ProfileView.m */,
+				84E4F8751879F9240017D07F /* ProfileView.xib */,
+				84E4F86E1879DD3B0017D07F /* TweetView.h */,
+				84E4F86F1879DD3B0017D07F /* TweetView.m */,
+				84E4F8701879DD3B0017D07F /* TweetView.xib */,
 				84E4F86918798EF40017D07F /* LentaView.h */,
 				84E4F86A18798EF40017D07F /* LentaView.m */,
 				84E4F86B18798EF40017D07F /* LentaView.xib */,
@@ -318,11 +334,13 @@
 			files = (
 				84E66382185F812E00708B42 /* InfoPlist.strings in Resources */,
 				84A3C2861875DA4A00D8E53E /* TweetPost.xib in Resources */,
+				84E4F8771879F9240017D07F /* ProfileView.xib in Resources */,
 				840B0E201878848E006A6219 /* SendPrivateView.xib in Resources */,
 				84A3C27E18758C7000D8E53E /* 1.jpg in Resources */,
 				840B0E221878AF3F006A6219 /* MAIN.jpg in Resources */,
 				84E663B1185F820500708B42 /* MainViewController.xib in Resources */,
 				840B0E1B18787E71006A6219 /* friendsList.xib in Resources */,
+				84E4F8721879DD3B0017D07F /* TweetView.xib in Resources */,
 				84E6638D185F812E00708B42 /* Images.xcassets in Resources */,
 				84A3C28018758D3800D8E53E /* wallpaper.jpg in Resources */,
 				84E4F86D18798EF40017D07F /* LentaView.xib in Resources */,
@@ -352,10 +370,12 @@
 				84E66384185F812E00708B42 /* main.m in Sources */,
 				84A3C2851875DA4900D8E53E /* TweetPost.m in Sources */,
 				84E663B0185F820500708B42 /* MainViewController.m in Sources */,
+				84E4F8711879DD3B0017D07F /* TweetView.m in Sources */,
 				84E00EA61872F1AC0066C994 /* Reachability.m in Sources */,
 				840B0E1F1878848E006A6219 /* SendPrivateView.m in Sources */,
 				840B0E1018773A94006A6219 /* tweetLists.m in Sources */,
 				840B0E15187864F8006A6219 /* followerList.m in Sources */,
+				84E4F8761879F9240017D07F /* ProfileView.m in Sources */,
 				840B0E1A18787E71006A6219 /* friendsList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -71,6 +71,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath * )indexPath
 {
+    
+    ProfileView * profileView = [[ProfileView alloc]initWithNibName:@"ProfileView" bundle:nil];
+    NSDictionary *user = users[indexPath.row];
+  
+    profileView.SCREEN_NAME =user[@"screen_name"];
+    NSLog(@"screen Name = %@",user[@"screen_name"]);
+    NSLog(@"SCREEN NAME %@",user[@"screen_name"]);
+    [self.navigationController pushViewController:profileView animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

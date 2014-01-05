@@ -123,8 +123,13 @@
             case 1:
             
         {
-           // ProfileView * profileView = [[ProfileView alloc]initWithNibName:@"ProfileView" bundle:nil];
-            //[self.navigationController pushViewController:profileView animated:YES];
+            ProfileView * profileView = [[ProfileView alloc]initWithNibName:@"ProfileView" bundle:nil];
+            NSDictionary *user = users[numberRow];
+            //cell.textLabel.text = user[@"name"];
+            //cell.detailTextLabel.text = [NSString stringWithFormat:@"@%@", user[@"screen_name"]];
+            profileView.SCREEN_NAME =user[@"screen_name"];
+             NSLog(@"screen Name = %@",user[@"screen_name"]);
+            [self.navigationController pushViewController:profileView animated:YES];
 
                    }
             break;

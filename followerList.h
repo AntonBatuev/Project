@@ -10,6 +10,7 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import "SendPrivateView.h"
+#import "ProfileView.h"
 @interface followerList : UIViewController<UIActionSheetDelegate>
 
 {

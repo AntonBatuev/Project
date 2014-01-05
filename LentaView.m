@@ -53,7 +53,8 @@
                 NSString *str = twitterAccount.username;
                 NSLog(@"USERNAME = %@",str);
                 NSMutableDictionary *param =[[NSMutableDictionary alloc]init];
-                [param setObject:@"1000" forKey:@"count"];
+                [param setObject:@"100" forKey:@"count"];
+                [param setObject:@"1" forKey:@"include_entities"];
                 NSURL *requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
                 SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestAPI parameters:param];
                 [twitterInfoRequest setAccount:twitterAccount];
@@ -106,48 +107,65 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath * )indexPath
 {
+    
+    TweetView *tweetView = [[TweetView alloc]initWithNibName:@"TweetView" bundle:nil];
+    tweetView.lentaORtweet = YES;
+    NSDictionary *dict = tweetDict[indexPath.row];
+    tweetView.tweet = dict;
+    NSLog(@"TWEET TEXT ====  %@",dict[@"text"] );
+    [self.navigationController pushViewController:tweetView animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
+    NSLog (@"CELL NEW");
     
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     CGRect size = CGRectMake(40, 25, 320, 25);
-    UILabel *tweetLabel = [[UILabel alloc]initWithFrame:size];
+    tweetLabel = [[UILabel alloc]initWithFrame:size];
+    tweetLabel.frame = size;
     size = CGRectMake(40, 0, 100, 20);
-    UILabel *nameLabel = [[UILabel alloc]initWithFrame:size];
+    nameLabel = [[UILabel alloc]initWithFrame:size];
+    
     size = CGRectMake(140, 0, 240, 20);
-    UILabel *screenNameLabel = [[UILabel alloc]initWithFrame:size];
+    screenNameLabel = [[UILabel alloc]initWithFrame:size];
     size = CGRectMake(0, 15, 35, 35);
-    UIImageView *imageCell = [[UIImageView alloc]initWithFrame:size];
+    imageCell = [[UIImageView alloc]initWithFrame:size];
    // imageCell.image = mainImage;
     //tweetLabel.text = @"tweetLabel";
     //nameLabel.text = @"nameLabel";
     nameLabel.font = [UIFont systemFontOfSize:12.0];
     screenNameLabel.font = [UIFont systemFontOfSize:12.0];
    // screenNameLabel.text = @"ScreenLabel";
-    [cell addSubview:tweetLabel];
-    [cell addSubview:nameLabel];
-    [cell addSubview:screenNameLabel];
-    [cell addSubview:imageCell];
     NSDictionary *dict = tweetDict[indexPath.row];
     NSDictionary *user = dict[@"user"];
     NSString *scrname = user[@"screen_name"];
-    screenNameLabel.text =[NSString stringWithFormat:@"@%@", scrname];
+    NSLog(@"ScreenName = %@",scrname);
+    NSLog(@"BOOL = %d",[scrname length]) ;
+    
     tweetLabel.text=dict[@"text"];
     nameLabel.text = user[@"name"];
+    cell.textLabel.text = dict[@"text"];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"@%@", user[@"screen_name"]];
     
-        NSURL *imageurl = [NSURL URLWithString:user[@"profile_image_url_https"]];
-    imageCell.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
-
+    //[cell addSubview:tweetLabel];
+   // [cell addSubview:nameLabel];
+    //[cell addSubview:screenNameLabel];
+    //[cell addSubview:imageCell];
+    
+    
+    
+    NSURL *imageurl = [NSURL URLWithString:user[@"profile_image_url_https"]];
+    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
+    
+    
     return cell;
 }
 

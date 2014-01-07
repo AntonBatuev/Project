@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title  = @"Твиты";
     [self.navigationController setNavigationBarHidden:NO];
     
     [self downloadTweet];
@@ -120,22 +121,14 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
         NSDictionary *selectTweet = tweetDict[indexPath.row];
         idTweet = selectTweet[@"id_str"];
-      //  NSLog(@"COUNT TWEET DICT 1   = %d COUNT ARRAY TWEET 1  = %d",[tweetDict count],[arrayTweet count]);
-        //[tableView beginUpdates];
         [arrayTweet removeObjectAtIndex:indexPath.row];
        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]withRowAnimation:UITableViewRowAnimationTop];
-       //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-        
         [self deleteTweet:idTweet];
         [self downloadTweet];
         NSLog(@"COUNT TWEET DICT 2 = %d COUNT ARRAY TWEET 2 = %d",[tweetDict count],[arrayTweet count]);
-        
-       [tableView reloadData];
-        //[tableView endUpdates];
-        
+        [tableView reloadData];
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert)
     {
@@ -157,9 +150,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    
-    
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil)
@@ -175,16 +165,11 @@
     size = CGRectMake(0, 15, 35, 35);
     UIImageView *imageCell = [[UIImageView alloc]initWithFrame:size];
     imageCell.image = mainImage;
-    tweetLabel.text = @"tweetLabel";
-    nameLabel.text = @"nameLabel";
+   // tweetLabel.text = @"tweetLabel";
+   // nameLabel.text = @"nameLabel";
     nameLabel.font = [UIFont systemFontOfSize:12.0];
     screenNameLabel.font = [UIFont systemFontOfSize:12.0];
     screenNameLabel.text = @"ScreenLabel";
-  //  [cell addSubview:tweetLabel];
-   // [cell addSubview:nameLabel];
-   // [cell addSubview:screenNameLabel];
-   // [cell addSubview:imageCell];
-  //  NSDictionary
     NSDictionary *dict = tweetDict[indexPath.row];
     cell.textLabel.text = dict[@"text"];
     NSDictionary *user = dict[@"user"];
@@ -253,11 +238,8 @@
                   [error localizedDescription]);
         }
     };
-    
     [accountStore requestAccessToAccountsWithType:twitterType
                                           options:NULL
                                        completion:accountStoreHandler];
-
 }
-
 @end

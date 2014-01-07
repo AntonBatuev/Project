@@ -27,7 +27,9 @@
 {
     [super viewDidLoad];
     NSLog(@"SCREEN NAME = %@",SCREEN_NAME);
+    self.title  = @"Профиль";
     [self LoadMainView];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -77,8 +79,7 @@
                             countFollower.text=[NSString stringWithFormat:@"%d", [[profileShow objectForKey:@"followers_count"]integerValue]];
                             countFriend.text=[NSString stringWithFormat:@"%d", [[profileShow objectForKey:@"friends_count"]integerValue]];
                             countTweet.text = [NSString stringWithFormat:@"%d", [[profileShow objectForKey:@"statuses_count"]integerValue]];
-                            NSURL *imageurl = [NSURL URLWithString:profileShow
-                                               [@"profile_image_url_https"]];
+                            NSURL *imageurl = [NSURL URLWithString:profileShow                                           [@"profile_image_url_https"]];
                             image.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
                             
                            }

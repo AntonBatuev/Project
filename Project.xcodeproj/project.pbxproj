@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8401DF3D187C2A26008C7A7C /* LentaList.m in Sources */ = {isa = PBXBuildFile; fileRef = 8401DF3C187C2A25008C7A7C /* LentaList.m */; };
 		840B0E1018773A94006A6219 /* tweetLists.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E0E18773A94006A6219 /* tweetLists.m */; };
 		840B0E1118773A94006A6219 /* tweetLists.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E0F18773A94006A6219 /* tweetLists.xib */; };
 		840B0E15187864F8006A6219 /* followerList.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E13187864F8006A6219 /* followerList.m */; };
@@ -16,6 +17,8 @@
 		840B0E1F1878848E006A6219 /* SendPrivateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B0E1D1878848E006A6219 /* SendPrivateView.m */; };
 		840B0E201878848E006A6219 /* SendPrivateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E1E1878848E006A6219 /* SendPrivateView.xib */; };
 		840B0E221878AF3F006A6219 /* MAIN.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 840B0E211878AF3E006A6219 /* MAIN.jpg */; };
+		845D40CE187CA09000D44FAA /* Friends.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D40CD187CA09000D44FAA /* Friends.m */; };
+		845D40D1187CB00D00D44FAA /* Followers.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D40D0187CB00D00D44FAA /* Followers.m */; };
 		84A3C27A18756E5E00D8E53E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A3C27918756E5E00D8E53E /* Security.framework */; };
 		84A3C27C18756E6E00D8E53E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A3C27B18756E6E00D8E53E /* SystemConfiguration.framework */; };
 		84A3C27E18758C7000D8E53E /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84A3C27D18758C6F00D8E53E /* 1.jpg */; };
@@ -61,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8401DF3B187C2A25008C7A7C /* LentaList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LentaList.h; sourceTree = "<group>"; };
+		8401DF3C187C2A25008C7A7C /* LentaList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LentaList.m; sourceTree = "<group>"; };
 		840B0E0D18773A94006A6219 /* tweetLists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tweetLists.h; sourceTree = "<group>"; };
 		840B0E0E18773A94006A6219 /* tweetLists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tweetLists.m; sourceTree = "<group>"; };
 		840B0E0F18773A94006A6219 /* tweetLists.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tweetLists.xib; sourceTree = "<group>"; };
@@ -74,6 +79,10 @@
 		840B0E1D1878848E006A6219 /* SendPrivateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendPrivateView.m; sourceTree = "<group>"; };
 		840B0E1E1878848E006A6219 /* SendPrivateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendPrivateView.xib; sourceTree = "<group>"; };
 		840B0E211878AF3E006A6219 /* MAIN.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MAIN.jpg; sourceTree = "<group>"; };
+		845D40CC187CA09000D44FAA /* Friends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friends.h; sourceTree = "<group>"; };
+		845D40CD187CA09000D44FAA /* Friends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friends.m; sourceTree = "<group>"; };
+		845D40CF187CB00D00D44FAA /* Followers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Followers.h; sourceTree = "<group>"; };
+		845D40D0187CB00D00D44FAA /* Followers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Followers.m; sourceTree = "<group>"; };
 		84A3C277187564FF00D8E53E /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		84A3C27918756E5E00D8E53E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		84A3C27B18756E6E00D8E53E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -151,6 +160,12 @@
 		84E66369185F812E00708B42 = {
 			isa = PBXGroup;
 			children = (
+				845D40CF187CB00D00D44FAA /* Followers.h */,
+				845D40D0187CB00D00D44FAA /* Followers.m */,
+				845D40CC187CA09000D44FAA /* Friends.h */,
+				845D40CD187CA09000D44FAA /* Friends.m */,
+				8401DF3B187C2A25008C7A7C /* LentaList.h */,
+				8401DF3C187C2A25008C7A7C /* LentaList.m */,
 				84E4F8731879F9240017D07F /* ProfileView.h */,
 				84E4F8741879F9240017D07F /* ProfileView.m */,
 				84E4F8751879F9240017D07F /* ProfileView.xib */,
@@ -367,6 +382,8 @@
 				84E66388185F812E00708B42 /* AppDelegate.m in Sources */,
 				84E4F86C18798EF40017D07F /* LentaView.m in Sources */,
 				84E6638B185F812E00708B42 /* Project.xcdatamodeld in Sources */,
+				845D40D1187CB00D00D44FAA /* Followers.m in Sources */,
+				845D40CE187CA09000D44FAA /* Friends.m in Sources */,
 				84E66384185F812E00708B42 /* main.m in Sources */,
 				84A3C2851875DA4900D8E53E /* TweetPost.m in Sources */,
 				84E663B0185F820500708B42 /* MainViewController.m in Sources */,
@@ -374,6 +391,7 @@
 				84E00EA61872F1AC0066C994 /* Reachability.m in Sources */,
 				840B0E1F1878848E006A6219 /* SendPrivateView.m in Sources */,
 				840B0E1018773A94006A6219 /* tweetLists.m in Sources */,
+				8401DF3D187C2A26008C7A7C /* LentaList.m in Sources */,
 				840B0E15187864F8006A6219 /* followerList.m in Sources */,
 				84E4F8761879F9240017D07F /* ProfileView.m in Sources */,
 				840B0E1A18787E71006A6219 /* friendsList.m in Sources */,
@@ -503,6 +521,7 @@
 					"/Users/Admin/Documents/Project/Project/Twitter+OAuth/SAOAuthTwitterEngine",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -520,6 +539,7 @@
 					"/Users/Admin/Documents/Project/Project/Twitter+OAuth/SAOAuthTwitterEngine",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

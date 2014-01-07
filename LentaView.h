@@ -10,6 +10,7 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 #import "TweetView.h"
+#import "AppDelegate.h"
 @interface LentaView : UIViewController
 
 {
@@ -18,7 +19,13 @@
     UIImageView *imageCell;
     UILabel *screenNameLabel;
     NSMutableArray *arrayText;
+   
+    BOOL flag;
+    //0 - Core Data Space;
+    //1 Core Data not Space;
+    BOOL netConnect;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tweetTable;
 @property (strong,nonatomic) NSMutableArray *tweetDict;
+@property (strong,nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @end

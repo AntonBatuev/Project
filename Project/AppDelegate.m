@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "LentaList.h"
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -40,12 +41,17 @@
 //    {
 //        NSLog(@"Fail");
 //    }
+    
+    
+   
    return YES;
 }
 
 -(void) updateInterfaceWith:(Reachability *)curReach
 {
+     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),^{
     self.netStatus = [curReach currentReachabilityStatus];
+      });
     
 }
 

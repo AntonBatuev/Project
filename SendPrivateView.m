@@ -28,9 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title  = @"Отправить сообщение";
     [self.navigationController setNavigationBarHidden:NO];
 
-   // sendButton = [[UIBarButtonItem alloc] initWithTitle:@"Отправить" style: target:self action:@selector(sendMessage)];
     sendButton= [[UIBarButtonItem alloc]initWithTitle:@"Отправить" style:UIBarButtonItemStyleDone target:self action:@selector(sendMessage)];
     self.navigationItem.rightBarButtonItem = sendButton;
     sendButton.enabled = NO;

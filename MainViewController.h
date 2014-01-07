@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
+
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import "TweetPost.h"
@@ -16,6 +16,7 @@
 #import "followerList.h"
 #import "friendsList.h"
 #import "LentaView.h"
+#import "LentaList.h"
 @interface MainViewController : UIViewController<NSURLConnectionDataDelegate>
 
 {
@@ -27,6 +28,7 @@
 }
 
 //@property (weak, nonatomic) IBOutlet UIImageView *image;
+
 @property (weak, nonatomic) IBOutlet UILabel *MainName;
 
 @property (strong,nonatomic) NSArray *array;
@@ -57,6 +59,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnListFollower;
 @property (weak, nonatomic) IBOutlet UIButton *btnListFriend;
 @property (weak, nonatomic) IBOutlet UIButton *btnAbout;
+@property (weak, nonatomic) IBOutlet UIButton *btnLenta;
 
 
 -(void) LoadMainView;

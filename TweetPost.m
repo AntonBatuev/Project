@@ -23,9 +23,9 @@
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
+    self.title  = @"Отправить твит";
     sendButton= [[UIBarButtonItem alloc]initWithTitle:@"Отправить" style:UIBarButtonItemStyleDone target:self action:@selector(Tweet)];
     self.navigationItem.rightBarButtonItem = sendButton;
     sendButton.enabled = NO;
@@ -33,17 +33,14 @@
     sendTweet.hidden = YES;
     fotoFlag= NO;
     [self.navigationController setNavigationBarHidden:NO];
-    ImageView.layer.cornerRadius =60;
+    ImageView.layer.cornerRadius =10;
     ImageView.clipsToBounds  = YES;
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 -(void)textViewDidChange:(UITextView *) textView
 {
     int len = textView.text.length;
@@ -239,15 +236,12 @@
     }
     else if (fotoFlag==NO)
     {
-         LabelCountSymbol.text = @"140";
+        LabelCountSymbol.text = @"140";
         NSLog(@"FOTO don`t selected");
-       
         self.imagePicker = [[UIImagePickerController alloc]init];
         self.imagePicker.delegate = self;
         [self.imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
         [self presentViewController:self.imagePicker animated:YES completion:nil];
-        //[photoButton setTitle:@"Убрать Фото" forState:UIControlStateNormal];
-
     }
 
     

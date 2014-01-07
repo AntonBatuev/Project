@@ -7,9 +7,12 @@
 //
 
 #import "followerList.h"
-
+#import "AppDelegate.h"
+#import "Followers.h"
 @interface followerList ()
-
+{
+    NSManagedObjectContext *context;
+}
 @end
 
 @implementation followerList
@@ -28,11 +31,90 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title  = @"Фолловеры";
      [self.navigationController setNavigationBarHidden:NO];
     [self downloadFollowerList];
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    AppDelegate *appdelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    context = [appdelegate managedObjectContext];
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription  *entity = [NSEntityDescription entityForName:@"Followers" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
+    
+    if (appdelegate.netStatus == NotReachable)
+    {
+        NSLog(@"Not connectionnnnnnnn");
+        //if (fetchedObjects.count!=0) {
+        netConnect = NO;
+        
+        NSLog(@"Кор дата не пустая.Должны заполнить таблицу из кор даты");
+        flag = YES;
+        // [followerTable reloadData];
+        //  }
+        NSLog(@"fetchedObjects.count = = = %d",fetchedObjects.count);
+        //  else
+        //{  // flag = NO;
+        //                [self downloadLenta];
+        //                NSLog(@"Кор дата пустая.Заполняем кор дату из твиитДикт,потом заполняем таблицу из кордаты");
+        //  }
+        
+        
+        
+    }
+    else if (appdelegate.netStatus ==ReachableViaWiFi)
+    {
+     //   NSLog(@"WIFIIIIIII");
+        netConnect = YES;
+        [self downloadFollowerList];
+        //            [self saveData];
+        //            [tweetTable reloadData];
+        
+        NSLog(@"Wifiiiiiiiiiiii");
+    }
+
+    
+}
+-(void)saveData
+{
+    //AppDelegate *appdelegate  = [[UIApplication sharedApplication]delegate];
+    //context = [appdelegate managedObjectContext];
+    //dispatch_async(dispatch_get_main_queue(), ^{
+    
+    NSFetchRequest *allfetch = [[NSFetchRequest alloc]init];
+    [allfetch setEntity:[NSEntityDescription entityForName:@"Followers" inManagedObjectContext:context]];
+    NSArray *arrr = [context executeFetchRequest:allfetch error:nil];
+    
+    for (Followers *lentt in arrr)
+    {
+        [context deleteObject:lentt];
+    }
+    NSError *saveError = nil;
+    [context save:&saveError];
+    
+    
+    
+    
+    NSLog(@"saveDataCountTweet = %d",[users count]);
+    for (int i =0 ; i<[users count]; i++)
+    {
+        Followers *followers = [NSEntityDescription insertNewObjectForEntityForName:@"Followers" inManagedObjectContext:context];
+        NSDictionary *dict = users[i];
+        //  NSDictionary *user = dict[@"user"];
+        followers.name = dict[@"name"];
+        followers.screen_name =[NSString stringWithFormat:@"@%@", dict[@"screen_name"]];
+        NSURL *imageurl = [NSURL URLWithString:dict[@"profile_image_url_https"]];
+        followers.image = [NSData dataWithContentsOfURL:imageurl];
+    }
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -48,7 +130,19 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [users count];
+    if (netConnect==NO)
+    {
+        NSLog(@"count row = %d",[tweetDict count]);
+        NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription  *entity = [NSEntityDescription entityForName:@"Followers" inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
+        return [fetchedObjects count];
+    }
+    else
+    {
+        return [users count];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -91,13 +185,46 @@
     }
     NSLog(@"array count = = = = %d",users.count);
     NSDictionary *user = users[indexPath.row];
-    cell.textLabel.text = user[@"name"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"@%@", user[@"screen_name"]];
-    NSURL *urlImage = [NSURL URLWithString:user[@"profile_image_url"]];
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:urlImage]];
-   // UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+       // UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
    // [cell addSubview:button];
-
+    if (netConnect == NO) {
+        
+        NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription  *entity = [NSEntityDescription entityForName:@"Followers" inManagedObjectContext:context];
+        [fetchRequest setEntity:entity];
+        NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:nil];
+        NSLog(@"COUNT FETCHEDOBJECTS = %d",[fetchedObjects count]);
+        NSMutableArray *Array_name = [NSMutableArray arrayWithCapacity:[fetchedObjects count]];
+        NSMutableArray *Array_Screen_name = [NSMutableArray arrayWithCapacity:[fetchedObjects count]];
+        NSMutableArray *Array_image = [NSMutableArray arrayWithCapacity:[fetchedObjects count]];
+        [Array_name removeAllObjects];
+        [Array_Screen_name removeAllObjects];
+        [Array_image removeAllObjects];
+        for (Followers *info in fetchedObjects)
+        {
+            
+            // cell.textLabel.text = info.text;
+            
+            [Array_name addObject:info.name];
+            [Array_Screen_name addObject:info.screen_name];
+            [Array_image addObject:info.image];
+            //NSLog(@"Text: %@", info.text);
+            //  NSLog(@"screen_name: %@", info.screen_name);
+        }
+        
+        cell.textLabel.text =Array_name[indexPath.row];
+        cell.detailTextLabel.text =Array_Screen_name[indexPath.row];
+        cell.imageView.image = [UIImage imageWithData:Array_image[indexPath.row]];
+    }
+    else
+    {
+        cell.textLabel.text = user[@"name"];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"@%@", user[@"screen_name"]];
+        NSURL *urlImage = [NSURL URLWithString:user[@"profile_image_url"]];
+        cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:urlImage]];
+        
+        //}
+    }
     
     return cell;
 }
@@ -160,18 +287,20 @@
                 NSString *str = twitterAccount.username;
                 NSLog(@"USERNAME = %@",str);
                 NSMutableDictionary *param =[[NSMutableDictionary alloc]init];
-                [param setObject:twitterAccount.username forKey:@"screenname"];
+                [param setObject:twitterAccount.username forKey:@"screen_name"];
                 NSURL *requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/followers/list.json"];
                 SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestAPI parameters:param];
                 [twitterInfoRequest setAccount:twitterAccount];
                 [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
                 {
                     tweetDict= [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+                    NSLog(@"tweetDict = %d",tweetDict.count);
                     if(tweetDict.count!=0){
                         dispatch_async(dispatch_get_main_queue(), ^
                         {
                             users = tweetDict[@"users"];
                             NSLog(@"users = %d",[users count]);
+                           [self saveData];
                             [followerTable reloadData];
                         });
                     }

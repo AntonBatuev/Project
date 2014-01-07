@@ -7,11 +7,12 @@
 //
 
 #import "MainViewController.h"
-
-
+#import "AppDelegate.h"
 
 @interface MainViewController ()
 
+{
+   }
 @end
 
 @implementation MainViewController
@@ -20,6 +21,7 @@
 @synthesize tweetCount,friendCount,followerCount,avatar,screenName,MainName;
 @synthesize lbfol,lbfr,lbtweet;
 @synthesize btnAbout,btnListFollower,btnListFriend,btnListTweet,btnTweet;
+@synthesize btnLenta;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     
@@ -33,8 +35,12 @@
 
 - (void)viewDidLoad
 {
+    [self testNet];
+    
+    
     avatar.layer.cornerRadius =40;
     avatar.clipsToBounds  = YES;
+    self.title  = @"";
   
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"MAIN.jpg"]drawInRect:self.view.bounds];
@@ -50,14 +56,18 @@
     btnListFriend.hidden=YES;
     btnListFollower.hidden = YES;
     btnAbout.hidden = YES;
+    btnLenta.hidden = YES;
     [super viewDidLoad];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if ([[userDefaults objectForKey:@"MainName"] length]==0) {
         NSLog(@"Space");
     }
-    else{
-        
+    else
+    {
+        lbtweet.hidden =  NO;
+        lbfr.hidden =  NO;
+        lbfol.hidden =  NO;
         MainName.text = [userDefaults objectForKey:@"MainName"];
         screenName.text = [userDefaults objectForKey:@"screenName"];
         followerCount.text= [NSString stringWithFormat:@"%@", [userDefaults objectForKey:@"followerCount"]];
@@ -65,11 +75,17 @@
         tweetCount.text = [NSString stringWithFormat:@"%@", [userDefaults objectForKey:@"tweetCount"]];
         NSData *imagedata = [userDefaults objectForKey:@"image"];
         avatar.image = [UIImage imageWithData:imagedata];
-     
-    }
+        btnTweet.hidden=NO;
+        btnListTweet.hidden=NO;
+        btnListFriend.hidden=NO;
+        btnListFollower.hidden = NO;
+        btnAbout.hidden = NO;
+        btnLenta.hidden = NO;
+
+   }
     
     array2 = [[NSMutableArray alloc]init];
-    [self.navigationController setNavigationBarHidden:YES];
+    //[self.navigationController setNavigationBarHidden:YES];
    //UIActivityIndicatorView* indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
    // [indicator startAnimating];
     //[self LoadMainView];
@@ -77,15 +93,34 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"MAINVIEW");
-     [self.navigationController setNavigationBarHidden:YES];
+    self.title  = @"Мой профиль";
+ //   [self testNet];
+    [self.navigationController setNavigationBarHidden:YES];
     [self LoadMainView];
 }
-
+-(void)testNet
+{
+    AppDelegate *appdelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    NSString *result ;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+    if (appdelegate.netStatus == NotReachable)
+    {
+        NSLog(@"Not connection");
+//        UIAlertView *nonConnection = [[UIAlertView alloc]initWithTitle:@"Нет интернета" message:@"Включите 3G или Wi-Fi" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [nonConnection show];
+    }
+    else if (appdelegate.netStatus ==ReachableViaWiFi)
+    {
+        NSLog(@"Wifi");
+    }
+ 
+    });
+}
 - (IBAction)aboutProgram:(id)sender {
     
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"О программе"
-                                            message:@"Реализованно:\n1.Просмотр твитов\n2.Отправка твитов\n3.Отправка твитов с фото\n4.Просмотр списка друзей\n5.Просмотр списка фолловеров\n6.Отправка личных сообщений\n7.Просмотр ленты\nВерсия 1.1\nCopyLeft ↄ 2014 Batuev Anton"
-
+                                            message:@"Реализованно:\n1.Просмотр твитов\n2.Отправка твитов\n3.Отправка твитов с фото\n4.Удаление твитов\n5.Просмотр списка друзей\n6.Просмотр списка фолловеров\n7.Отправка личных сообщений\n8.Просмотр ленты\n9.Просмотр профиля\n10.CoreData(Лента,друзья,фолловеры),NSUserDefaults\nВерсия 1.2.1\nCopyLeft ↄ2014 Batuev Anton"
                                             delegate:self
                                             cancelButtonTitle:@"OK"
                                             otherButtonTitles:nil];
@@ -135,15 +170,16 @@
                             followerCount.text=[NSString stringWithFormat:@"%d", [[mainDict objectForKey:@"followers_count"]integerValue]];
                             friendCount.text=[NSString stringWithFormat:@"%d", [[mainDict objectForKey:@"friends_count"]integerValue]];
                             tweetCount.text = [NSString stringWithFormat:@"%d", [[mainDict objectForKey:@"statuses_count"]integerValue]];
-                            lbtweet.hidden =  NO;
-                            lbfr.hidden =  NO;
-                            lbfol.hidden =  NO;
                             btnTweet.hidden=NO;
                             btnListTweet.hidden=NO;
                             btnListFriend.hidden=NO;
                             btnListFollower.hidden = NO;
                             btnAbout.hidden = NO;
-                            
+                            btnLenta.hidden = NO;
+                            lbtweet.hidden =  NO;
+                            lbfr.hidden =  NO;
+                            lbfol.hidden =  NO;
+
                             [userDefaults setObject:MainName.text forKey:@"MainName"];
                             [userDefaults setObject:screenName.text forKey:@"screenName"];
                             [userDefaults setInteger:[[mainDict objectForKey:@"followers_count"]integerValue] forKey:@"followerCount"];

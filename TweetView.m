@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title  = @"Твит";
        if (lentaORtweet == NO) {
            UIBarButtonItem  *deleteButton= [[UIBarButtonItem alloc]initWithTitle:@"Удалить"  style:UIBarButtonItemStyleBordered target:self action:@selector(delete)];
            self.navigationItem.rightBarButtonItem = deleteButton;

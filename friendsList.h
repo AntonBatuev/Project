@@ -11,7 +11,14 @@
 #import <Social/Social.h>
 #import "ProfileView.h"
 @interface friendsList : UIViewController
-
+{
+    
+    BOOL flag;
+    //0 - Core Data Space;
+    //1 Core Data not Space;
+    BOOL netConnect;
+    
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *followerTable;
 @property   (strong,nonatomic) NSMutableDictionary *tweetDict;

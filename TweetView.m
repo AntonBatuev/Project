@@ -25,6 +25,9 @@
 
 - (void)viewDidLoad
 {
+    lblDate.hidden = YES;
+    lblName.hidden = YES;
+    lblScreenName.hidden = YES;
     [super viewDidLoad];
     self.title  = @"Твит";
        if (lentaORtweet == NO) {
@@ -32,6 +35,11 @@
            self.navigationItem.rightBarButtonItem = deleteButton;
  }
     Text.text = tweet[@"text"];
+    if ([tweet[@"text"]length]!=0) {
+        
+        lblDate.hidden = NO;
+        lblName.hidden = NO;
+        lblScreenName.hidden = NO;
     NSDictionary *user = tweet[@"user"];
     lblName.text = user[@"name"];
     lblScreenName.text =[NSString stringWithFormat:@"@%@", user[@"screen_name"]];
@@ -43,7 +51,7 @@
     NSURL *imageurl = [NSURL URLWithString:user[@"profile_image_url"]];
     image.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
     
-    
+    }
     
     // Do any additional setup after loading the view from its nib.
 }

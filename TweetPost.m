@@ -7,6 +7,7 @@
 //
 
 #import "TweetPost.h"
+#import "AppDelegate.h"
 
 @interface TweetPost ()
 
@@ -36,6 +37,10 @@
     ImageView.layer.cornerRadius =10;
     ImageView.clipsToBounds  = YES;
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+   }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -43,15 +48,26 @@
 }
 -(void)textViewDidChange:(UITextView *) textView
 {
-    int len = textView.text.length;
-    if (len == 0) sendButton.enabled = NO;
-    else sendButton.enabled = YES;
-    if (fotoFlag == YES) {
-         LabelCountSymbol.text = [NSString stringWithFormat:@"%i",116-len];
+    AppDelegate *appdelegate = [[UIApplication sharedApplication]delegate];
+    NSLog(@"TEXTVIEWDIDCHANGE");
+    if (appdelegate.netStatus ==NotReachable) {
+        sendButton.enabled = NO;
+        NSLog(@"DISABLE");
     }
     else
     {
-        LabelCountSymbol.text = [NSString stringWithFormat:@"%i",140-len];
+
+    
+        int len = textView.text.length;
+        if (len == 0) sendButton.enabled = NO;
+        else sendButton.enabled = YES;
+        if (fotoFlag == YES) {
+            LabelCountSymbol.text = [NSString stringWithFormat:@"%i",116-len];
+        }
+        else
+        {
+            LabelCountSymbol.text = [NSString stringWithFormat:@"%i",140-len];
+        }
     }
     
 }

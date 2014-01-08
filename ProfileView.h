@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (strong,nonatomic) NSString *SCREEN_NAME;
 @property (strong,nonatomic)NSDictionary *profileShow;
+@property (weak, nonatomic) IBOutlet UILabel *tweet;
+@property (weak, nonatomic) IBOutlet UILabel *foll;
+@property (weak, nonatomic) IBOutlet UILabel *fr;
 
 
 @end

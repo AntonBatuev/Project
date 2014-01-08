@@ -13,7 +13,7 @@
 @end
 
 @implementation ProfileView
-@synthesize name,screenName,countFollower,countFriend,countTweet,image,SCREEN_NAME,profileShow;
+@synthesize name,screenName,countFollower,countFriend,countTweet,image,SCREEN_NAME,profileShow,tweet,foll,fr;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,6 +25,9 @@
 
 - (void)viewDidLoad
 {
+    tweet.hidden = YES;
+    foll.hidden = YES;
+    fr.hidden = YES;
     [super viewDidLoad];
     NSLog(@"SCREEN NAME = %@",SCREEN_NAME);
     self.title  = @"Профиль";
@@ -53,6 +56,11 @@
                 ACAccount *twitterAccount = [accounts objectAtIndex:0];
                 NSString *str = twitterAccount.username;
                 NSLog(@"USERNAME = %@",str);
+                if ([SCREEN_NAME length]==0) {
+                    return ;
+                    
+                }
+                
                 NSDictionary *param =[NSDictionary dictionaryWithObject:SCREEN_NAME forKey:@"screen_name"];
                 NSURL *requestAPI = [NSURL URLWithString:@"https://api.twitter.com/1.1/users/show.json"];
                 SLRequest *twitterInfoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestAPI parameters:param];
@@ -73,7 +81,12 @@
                         {
                             NSError *error = nil;
                             profileShow = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
+                            if (profileShow.count!=0) {
+                                
                             
+                                tweet.hidden = NO;
+                                foll.hidden = NO;
+                                fr.hidden = NO;
                             name.text = profileShow[@"name"];
                             screenName.text = [NSString stringWithFormat:@"@%@",profileShow[@"screen_name"]];
                             countFollower.text=[NSString stringWithFormat:@"%d", [[profileShow objectForKey:@"followers_count"]integerValue]];
@@ -81,6 +94,7 @@
                             countTweet.text = [NSString stringWithFormat:@"%d", [[profileShow objectForKey:@"statuses_count"]integerValue]];
                             NSURL *imageurl = [NSURL URLWithString:profileShow                                           [@"profile_image_url_https"]];
                             image.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageurl]];
+                            }
                             
                            }
                     });

@@ -9,9 +9,12 @@
                 <outlet property="countFollower" destination="LYU-tF-I9R" id="KTX-DV-mh5"/>
                 <outlet property="countFriend" destination="4si-2j-2JV" id="hD5-U8-zDY"/>
                 <outlet property="countTweet" destination="p8h-OI-IOK" id="2rm-H8-df1"/>
+                <outlet property="foll" destination="aSn-1t-lg2" id="fTZ-s0-6dA"/>
+                <outlet property="fr" destination="EtF-wm-YuU" id="zjM-Vs-K0h"/>
                 <outlet property="image" destination="4GZ-Dp-JIt" id="Cba-5M-pZB"/>
                 <outlet property="name" destination="kPU-wT-4PG" id="EVf-45-Rys"/>
                 <outlet property="screenName" destination="zz5-ur-tNJ" id="9zv-gW-VjG"/>
+                <outlet property="tweet" destination="TCq-67-MXc" id="Pfv-GN-2KD"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
